@@ -4,9 +4,9 @@
 
 using namespace std;
 
-void duomenuSkaitymas(int balsai[], int &balsavusiujuSkaicius, int &kandidatuSkaicius, ifstream &read);
+void nuskaitytiDuomenis(int balsai[], int &balsavusiujuSkaicius, int &kandidatuSkaicius, ifstream &read);
 void skaiciuotiBalsus(int balsai[], int kandidatai[], int balsavusiujuSkaicius, int kandidatuSkaicius);
-void rezultatuRasymas(int kandidatai[], int kandidatuSkaicius, ofstream &write);
+void irasytiRezulatatus(int kandidatai[], int kandidatuSkaicius, ofstream &write);
 
 int const MAX_BALSAI = 1000,
           MAX_KANDIDATAI = 100;
@@ -26,9 +26,9 @@ int main()
     if (!read) {return 1;}
     ofstream write("balsavimo_lentele.txt");
 
-    duomenuSkaitymas(balsai, balsavusiujuSkaicius, kandidatuSkaicius, read);
+    nuskaitytiDuomenis(balsai, balsavusiujuSkaicius, kandidatuSkaicius, read);
     skaiciuotiBalsus(balsai, kandidatai, balsavusiujuSkaicius, kandidatuSkaicius);
-    rezultatuRasymas(kandidatai, kandidatuSkaicius, write);
+    irasytiRezulatatus(kandidatai, kandidatuSkaicius, write);
 
     read.close();
     write.close();
@@ -40,7 +40,7 @@ int main()
     return 0;
 }
 
-void duomenuSkaitymas(int balsai[], int &balsavusiujuSkaicius, int &kandidatuSkaicius, ifstream &read)
+void nuskaitytiDuomenis(int balsai[], int &balsavusiujuSkaicius, int &kandidatuSkaicius, ifstream &read)
 {
     read >> balsavusiujuSkaicius >> kandidatuSkaicius;
     for (int i = 0; i < balsavusiujuSkaicius; i++) {
@@ -59,7 +59,7 @@ void skaiciuotiBalsus(int balsai[], int kandidatai[], int balsavusiujuSkaicius, 
     }
 }
 
-void rezultatuRasymas(int kandidatai[], int kandidatuSkaicius, ofstream &write)
+void irasytiRezulatatus(int kandidatai[], int kandidatuSkaicius, ofstream &write)
 {
     write << "-------------------------------------\n";
     write << "|  Kandidato nr." << setw(10) << "  |   Balsu kiekis  |\n";
